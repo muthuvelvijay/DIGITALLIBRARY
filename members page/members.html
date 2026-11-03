@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Member Management</title>
+
+    <link rel="stylesheet" href="members.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../auth.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html">Dashboard</a>
+            <a href="../book page/book.html">Books</a>
+            <a href="../members page/members.html" class="active" aria-current="page">Members</a>
+            <a href="../issue page/issue.html">Issue Book</a>
+            <a href="../return page/return.html">Return Book</a>
+            <a href="../report page/report.html">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="header">
+            <h1>👥 Member Management</h1>
+
+            <button class="add-btn" onclick="showAddMember()">
+                + Add Member
+            </button>
+        </div>
+
+        <!-- Search Section -->
+        <section class="search-section">
+
+            <h2>🔍 Search Members</h2>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchMember"
+                    placeholder="Enter Member Name or ID"
+                >
+
+                <button type="button" onclick="searchMembers()">
+                    Search
+                </button>
+
+                <button type="button" class="clear-btn" onclick="clearSearch()">
+                    Clear
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Member List -->
+        <div id="memberList">
+
+            <div class="member-actions">
+
+                <button type="button" class="select-btn"
+                    onclick="selectAllMembers()">
+                    ☑ Select All
+                </button>
+
+                <button type="button" class="delete-all-btn"
+                    onclick="deleteSelectedMembers()">
+                    🗑 Delete Selected
+                </button>
+
+                <span id="selectedCount">0 Members Selected</span>
+
+            </div>
+
+            <!-- Member Table -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="selectAllCheckbox"
+                                    onchange="toggleSelectAll(this)">
+                            </th>
+                            <th>Member ID</th>
+                            <th>Member Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Membership Type</th>
+                            <th>Join Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="memberTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Add / Edit Member Form -->
+        <div id="addMemberForm" class="form-container">
+
+            <h2 id="formTitle">👤 Add New Member</h2>
+
+            <form id="memberForm">
+
+                <div class="form-group">
+                    <label for="memberId">Member ID</label>
+                    <input type="text" id="memberId"
+                        placeholder="Enter Member ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="memberName">Member Name</label>
+                    <input type="text" id="memberName"
+                        placeholder="Enter Member Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email"
+                        placeholder="Enter Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone"
+                        placeholder="Enter Phone Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address"
+                        placeholder="Enter Address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="membershipType">Membership Type</label>
+
+                    <select id="membershipType" required>
+                        <option value="">-- Select Membership Type --</option>
+                        <option value="Student">Student</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="General">General</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="joinDate">Join Date</label>
+                    <input type="date" id="joinDate" required>
+                </div>
+
+                <button type="submit" class="save-btn">
+                    💾 Save Member
+                </button>
+
+                <button type="button" class="return-btn"
+                    onclick="showMemberList()">
+                    ↩ Return to Member List
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="members.js"></script>
+
+</body>
+</html>

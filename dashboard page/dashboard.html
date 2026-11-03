@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Library - Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../auth.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html" class="active" aria-current="page">Dashboard</a>
+            <a href="../book page/book.html">Books</a>
+            <a href="../members page/members.html">Members</a>
+            <a href="../issue page/issue.html">Issue Book</a>
+            <a href="../return page/return.html">Return Book</a>
+            <a href="../report page/report.html">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+
+
+    <!-- Dashboard -->
+    <main class="dashboard">
+
+        <!-- Welcome Section -->
+        <section class="welcome">
+
+            <h1>Welcome to Dashboard</h1>
+
+            <p>
+                Digital Library Management System
+            </p>
+
+        </section>
+
+
+        <!-- Dashboard Cards -->
+        <section class="cards">
+
+            <!-- Books -->
+            <div class="card">
+
+                <div class="icon">📚</div>
+
+                <h2>Books</h2>
+
+                <p>
+                    Manage all library books and book details.
+                </p>
+
+                <button onclick="location.href='../book page/book.html'">
+                    View Books
+                </button>
+
+            </div>
+
+
+            <!-- Members -->
+            <div class="card">
+
+                <div class="icon">👥</div>
+
+                <h2>Members</h2>
+
+                <p>
+                    Add, view and manage library members.
+                </p>
+
+                <button onclick="location.href='../members page/members.html'">
+                    View Members
+                </button>
+
+            </div>
+
+
+            <!-- Issue Book -->
+            <div class="card">
+
+                <div class="icon">📖</div>
+
+                <h2>Issue Book</h2>
+
+                <p>
+                    Issue books to registered library members.
+                </p>
+
+                <button onclick="location.href='../issue page/issue.html'">
+                    Issue Book
+                </button>
+
+            </div>
+
+
+            <!-- Return Book -->
+            <div class="card">
+
+                <div class="icon">🔄</div>
+
+                <h2>Return Book</h2>
+
+                <p>
+                    Manage returned books and update records.
+                </p>
+
+                <button onclick="location.href='../return page/return.html'">
+                    Return Book
+                </button>
+
+            </div>
+
+
+            <!-- Reports -->
+            <div class="card">
+
+                <div class="icon">📊</div>
+
+                <h2>Reports</h2>
+
+                <p>
+                    View library activity and management reports.
+                </p>
+
+                <button onclick="location.href='../report page/report.html'">
+                    View Reports
+                </button>
+
+            </div>
+
+
+            <!-- About -->
+            <div class="card">
+
+                <div class="icon">ℹ️</div>
+
+                <h2>About</h2>
+
+                <p>
+                    Learn more about the Digital Library System.
+                </p>
+
+                <button onclick="location.href='../about page/about.html'">
+                    About Library
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Digital Library Management System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

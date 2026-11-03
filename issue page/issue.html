@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Book | Digital Library</title>
+    <link rel="stylesheet" href="issue.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../auth.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html">Dashboard</a>
+            <a href="../book page/book.html">Books</a>
+            <a href="../members page/members.html">Members</a>
+            <a href="../issue page/issue.html" class="active" aria-current="page">Issue Book</a>
+            <a href="../return page/return.html">Return Book</a>
+            <a href="../report page/report.html">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+ 
+
+    <main class="container">
+
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">LIBRARY MANAGEMENT</p>
+                <h1>Issue a Book</h1>
+                <p class="page-description">Assign an available book to a registered member and track active loans.</p>
+            </div>
+        </header>
+
+        <section class="form-card">
+            <h2>New Issue</h2>
+            <p class="subtitle">
+                Select a member and a book to issue.
+            </p>
+
+            <div id="message" role="status" aria-live="polite"></div>
+
+            <form id="issueForm">
+
+                <div class="form-group">
+                    <label for="memberName">Member Name</label>
+                    <select id="memberName" required>
+                        <option value="">Select Member</option>
+                    </select>
+                    <small id="memberError" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookName">Book Name</label>
+                    <select id="bookName" required>
+                        <option value="">Select Book</option>
+                    </select>
+                    <small id="bookError" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookQuantity">Quantity</label>
+                    <input type="number" id="bookQuantity" min="1" step="1" value="1" required>
+                    <small class="field-hint">Choose how many copies to issue.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="issueDate">Issue Date</label>
+                    <input type="date" id="issueDate" required>
+                    <small id="issueDateError" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" id="returnDate" required>
+                    <small id="returnDateError" class="error"></small>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="issue-btn">
+                        Issue Book
+                    </button>
+
+                    <button type="reset" class="reset-btn">
+                        Clear
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="table-card">
+            <div class="table-heading">
+                <div>
+                    <h2>Issued Books</h2>
+                    <p class="subtitle">Review active and returned book records.</p>
+                </div>
+                <span id="selectedCount" class="selected-count">0 Books Selected</span>
+            </div>
+
+            <div class="table-actions">
+                <label class="select-all">
+                    <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)">
+                    Select all records
+                </label>
+                <button type="button" class="delete-all-btn" onclick="deleteSelectedBooks()">Delete selected</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" aria-label="Select record"></th>
+                            <th>Issue ID</th>
+                            <th>Member Name</th>
+                            <th>Book Name</th>
+                            <th>Quantity</th>
+                            <th>Issue Date</th>
+                            <th>Return Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="issuedBooksTable">
+                        <tr>
+                            <td colspan="9">No books issued yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Digital Library Management System</p>
+    </footer>
+
+    <script src="issue.js"></script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+
+/* =========================
+   DASHBOARD CSS
+   ========================= */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+    width: 100%;
+    min-height: 70px;
+
+    background: #667eea;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 40px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Logo */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Navigation Anchor */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+}
+
+
+/* Navigation Hover */
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Logout Button */
+.nav-links button {
+    background: #e74c3c;
+
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 10px 16px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* Logout Hover */
+.nav-links button:hover {
+    background: #c0392b;
+}
+
+
+/* =========================
+   DASHBOARD
+   ========================= */
+
+.dashboard {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 40px auto;
+}
+
+
+/* Welcome Section */
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.welcome h1 {
+    font-size: 36px;
+    color: #333;
+
+    margin-bottom: 10px;
+}
+
+
+.welcome p {
+    font-size: 18px;
+    color: #777;
+}
+
+
+/* =========================
+   CARDS
+   ========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* Card */
+.card {
+    background: white;
+
+    padding: 30px 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+/* Card Hover */
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Card Icon */
+.icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Card Heading */
+.card h2 {
+    color: #333;
+
+    font-size: 22px;
+
+    margin-bottom: 12px;
+}
+
+
+/* Card Paragraph */
+.card p {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    min-height: 45px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Card Button */
+.card button {
+    background: #667eea;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* Card Button Hover */
+.card button:hover {
+    background: #5568d9;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    width: 100%;
+
+    background: #5568d9;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 18px;
+
+    margin-top: 50px;
+}
+
+
+footer p {
+    font-size: 14px;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 18px 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 5px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+
+        padding: 8px;
+    }
+
+    .nav-links button {
+        font-size: 12px;
+
+        padding: 8px 12px;
+    }
+
+    .dashboard {
+        width: 92%;
+
+        margin: 30px auto;
+    }
+
+    .welcome h1 {
+        font-size: 28px;
+    }
+
+    .welcome p {
+        font-size: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    footer {
+        margin-top: 30px;
+    }
+}
+

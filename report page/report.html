@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Reports</title>
+
+    <link rel="stylesheet" href="report.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <script src="../auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html">Dashboard</a>
+            <a href="../book page/book.html">Books</a>
+            <a href="../members page/members.html">Members</a>
+            <a href="../issue page/issue.html">Issue Book</a>
+            <a href="../return page/return.html">Return Book</a>
+            <a href="../report page/report.html" class="active" aria-current="page">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Page Heading -->
+    <main class="container">
+
+        <h1>Library Reports</h1>
+        <p class="subtitle">
+            View your library summary and book details
+        </p>
+
+        <!-- Summary Cards -->
+        <section class="cards">
+
+            <div class="card">
+                <h3>Total Books</h3>
+                <p id="totalBooks">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Members</h3>
+                <p id="totalMembers">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Issued Books</h3>
+                <p id="issuedBooks">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Returned Books</h3>
+                <p id="returnedBooks">0</p>
+            </div>
+
+        </section>
+
+        <!-- Book Report -->
+        <section class="report-box">
+
+            <h2>Book Details Report</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by Book ID, name, author or category..."
+                oninput="searchBooks()"
+            >
+
+            <div class="table-container">
+                <table id="bookTable">
+
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="bookTableBody">
+                    </tbody>
+
+                </table>
+            </div>
+
+            <p id="bookCount" class="book-count">
+                Total book records: 0
+            </p>
+
+            <button type="button" onclick="downloadSummaryReport()">
+                Download Excel Summary
+            </button>
+
+        </section>
+
+    </main>
+
+    <script>
+        // Get data from Local Storage safely
+        function getData(key) {
+            try {
+                const data = JSON.parse(localStorage.getItem(key));
+                return Array.isArray(data) ? data : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        // Get the project's saved data
+        let books = getData("books");
+        let members = getData("members");
+        let issuedList = getData("issuedBooks");
+
+        // Update all summary counts
+        function updateCounts() {
+            const returnedCount = issuedList.filter(function(issue) {
+                return issue.status === "Returned";
+            }).length;
+            const issuedCount = issuedList.length - returnedCount;
+
+            document.getElementById("totalBooks").textContent =
+                books.length;
+
+            document.getElementById("totalMembers").textContent =
+                members.length;
+
+            document.getElementById("issuedBooks").textContent =
+                issuedCount;
+
+            document.getElementById("returnedBooks").textContent =
+                returnedCount;
+        }
+
+        // Safely display text inside table cells
+        function createCell(value) {
+            const td = document.createElement("td");
+            td.textContent = value ?? "";
+            return td;
+        }
+
+        // Display books from Local Storage
+        function displayBooks(list = books) {
+            const tbody = document.getElementById("bookTableBody");
+
+            tbody.replaceChildren();
+
+            if (list.length === 0) {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+
+                cell.colSpan = 5;
+                cell.textContent = "No books found!";
+
+                row.appendChild(cell);
+                tbody.appendChild(row);
+            } else {
+                list.forEach(function(book) {
+                    const row = document.createElement("tr");
+
+                    row.appendChild(
+                        createCell(book.bookId ?? book.id ?? book.bookID)
+                    );
+
+                    row.appendChild(
+                        createCell(book.bookName ?? book.name ?? book.title)
+                    );
+
+                    row.appendChild(
+                        createCell(book.author)
+                    );
+
+                    row.appendChild(
+                        createCell(book.category)
+                    );
+
+                    row.appendChild(
+                        createCell(book.quantity ?? book.qty ?? 0)
+                    );
+
+                    tbody.appendChild(row);
+                });
+            }
+
+            document.getElementById("bookCount").textContent =
+                "Showing " + list.length + " of " + books.length +
+                " book records";
+        }
+
+        // Search books
+        function searchBooks() {
+            const input = document
+                .getElementById("searchInput")
+                .value.toLowerCase()
+                .trim();
+
+            const filteredBooks = books.filter(function(book) {
+                const details = [
+                    book.bookId,
+                    book.id,
+                    book.bookID,
+                    book.bookName,
+                    book.name,
+                    book.title,
+                    book.author,
+                    book.category,
+                    book.publisher
+                ];
+
+                return details.some(function(value) {
+                    return String(value ?? "")
+                        .toLowerCase()
+                        .includes(input);
+                });
+            });
+
+            displayBooks(filteredBooks);
+        }
+
+        function downloadSummaryReport() {
+            const currentBooks = getData("books");
+            const currentMembers = getData("members");
+            const spreadsheet =
+                '<?xml version="1.0"?>' +
+                '<?mso-application progid="Excel.Sheet"?>' +
+                '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
+                'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
+                '<Worksheet ss:Name="Library Summary"><Table>' +
+                '<Row><Cell><Data ss:Type="String">Report</Data></Cell><Cell><Data ss:Type="String">Count</Data></Cell></Row>' +
+                '<Row><Cell><Data ss:Type="String">Total Books</Data></Cell><Cell><Data ss:Type="Number">' + currentBooks.length + '</Data></Cell></Row>' +
+                '<Row><Cell><Data ss:Type="String">Total Members</Data></Cell><Cell><Data ss:Type="Number">' + currentMembers.length + '</Data></Cell></Row>' +
+                '</Table></Worksheet></Workbook>';
+            const file = new Blob([spreadsheet], {
+                type: "application/vnd.ms-excel;charset=utf-8"
+            });
+            const downloadUrl = URL.createObjectURL(file);
+            const downloadLink = document.createElement("a");
+
+            downloadLink.href = downloadUrl;
+            downloadLink.download = "library-summary.xls";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            URL.revokeObjectURL(downloadUrl);
+        }
+
+        // Refresh data whenever the report page opens
+        function loadReport() {
+            books = getData("books");
+            members = getData("members");
+            issuedList = getData("issuedBooks");
+
+            updateCounts();
+            searchBooks();
+        }
+
+        loadReport();
+
+        // Refresh when returning to this browser tab
+        window.addEventListener("focus", loadReport);
+
+        // Refresh when Local Storage changes in another tab
+        window.addEventListener("storage", loadReport);
+    </script>
+
+</body>
+</html>

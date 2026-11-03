@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management</title>
+    <link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html">Dashboard</a>
+            <a href="../book page/book.html" class="active" aria-current="page">Books</a>
+            <a href="../members page/members.html">Members</a>
+            <a href="../issue page/issue.html">Issue Book</a>
+            <a href="../return page/return.html">Return Book</a>
+            <a href="../report page/report.html">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <main class="container">
+
+        <div class="page-header">
+            <div>
+                <h1>Book Management</h1>
+                <p>Add, edit, search and manage books.</p>
+            </div>
+
+            <button class="add-btn" onclick="showAddBook()">
+                + Add Book
+            </button>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchBook"
+                placeholder="Search by ID, name, author, category..."
+                oninput="searchBooks()"
+            >
+
+            <button class="clear-btn" onclick="clearSearch()">
+                Clear
+            </button>
+        </div>
+
+        <!-- Selection Buttons -->
+        <div class="select-buttons">
+            <label class="select-all-label">
+                <input
+                    type="checkbox"
+                    id="selectAll"
+                    onchange="selectAllBooks(this.checked)"
+                >
+                Select All
+            </label>
+
+            <button class="delete-selected-btn"
+                onclick="deleteSelectedBooks()">
+                🗑 Delete Selected
+            </button>
+
+           
+        </div>
+
+        <p class="selected-count" id="selectedCount">
+            0 books selected
+        </p>
+
+        <!-- Books Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Publisher</th>
+                        <th>Year</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="bookTableBody"></tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- Add / Edit Popup -->
+    <div class="popup" id="bookPopup">
+        <div class="popup-content">
+
+            <button type="button" class="close-btn"
+                onclick="closePopup()">&times;</button>
+
+            <h2 id="formTitle">Add New Book</h2>
+            <p class="popup-description">Enter the book details.</p>
+
+            <form id="bookForm" onsubmit="addBook(event)">
+
+                <label for="bookId">Book ID</label>
+                <input type="text" id="bookId"
+                    placeholder="Example: B001" required>
+
+                <label for="bookName">Book Name</label>
+                <input type="text" id="bookName"
+                    placeholder="Enter book name" required>
+
+                <label for="author">Author</label>
+                <input type="text" id="author"
+                    placeholder="Enter author name" required>
+
+                <label for="category">Category</label>
+                <input type="text" id="category"
+                    placeholder="Enter category" required>
+
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher"
+                    placeholder="Enter publisher" required>
+
+                <label for="year">Year</label>
+                <input type="number" id="year"
+                    placeholder="Publication year" min="1" required>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity"
+                    placeholder="Enter quantity" min="1" required>
+
+                <div class="form-buttons">
+                    <button type="submit" id="saveBtn" class="save-btn">
+                        Save Book
+                    </button>
+
+                    <button type="button" class="cancel-btn"
+                        onclick="closePopup()">
+                        Cancel
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Digital Library Management System</p>
+    </footer>
+
+    <script src="book.js"></script>
+</body>
+</html>

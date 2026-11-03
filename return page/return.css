@@ -1,0 +1,311 @@
+
+/* Common Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    min-height: 70px;
+    background: #667eea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-links button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-links button:hover {
+    background: #c0392b;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    flex: 1;
+}
+
+/* Page Headings */
+.container h1 {
+    color: #667eea;
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.container h1:not(:first-child) {
+    margin-top: 45px;
+}
+
+/* Message */
+#message {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Return Book Table Box */
+.table-box {
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: 100%;
+    min-width: 750px;
+    border-collapse: collapse;
+    background: white;
+}
+
+thead {
+    background: #667eea;
+    color: white;
+}
+
+th,
+td {
+    padding: 15px 12px;
+    text-align: center;
+    border: 1px solid #eee;
+    font-size: 14px;
+}
+
+th {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8f9ff;
+}
+
+tbody tr:hover {
+    background: #eef0ff;
+}
+
+tbody td {
+    color: #555;
+}
+
+/* Action Buttons inside table */
+table button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+table button:hover {
+    background: #5568d9;
+    transform: scale(1.03);
+}
+
+/* Library Reports */
+.report-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Report Cards */
+.report-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+    border-top: 5px solid #667eea;
+}
+
+.report-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.report-card h3 {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.report-card p {
+    color: #667eea;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: #5568d9;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 50px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .report-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 18px 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 5px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .nav-links button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .container {
+        width: 92%;
+        margin: 30px auto;
+    }
+
+    .container h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .container h1:not(:first-child) {
+        margin-top: 35px;
+    }
+
+    .table-box {
+        padding: 15px;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .report-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .report-card {
+        padding: 25px 20px;
+    }
+
+    .report-card h3 {
+        font-size: 17px;
+    }
+
+    .report-card p {
+        font-size: 32px;
+    }
+
+    footer {
+        padding: 16px 10px;
+        margin-top: 30px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Book & Reports</title>
+    <link rel="stylesheet" href="return.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script src="../auth.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">📚 Digital Library</div>
+
+        <div class="nav-links">
+            <a href="../dashboard page/dashboard.html">Dashboard</a>
+            <a href="../book page/book.html">Books</a>
+            <a href="../members page/members.html">Members</a>
+            <a href="../issue page/issue.html">Issue Book</a>
+            <a href="../return page/return.html" class="active" aria-current="page">Return Book</a>
+            <a href="../report page/report.html">Reports</a>
+            <a href="../about page/about.html">About</a>
+            <a href="../login page/login.html" class="logout-link">Logout</a>
+        </div>
+    </nav>
+    <main class="container">
+
+        <h1>Return Book</h1>
+
+        <p id="message"></p>
+
+        <div class="table-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue ID</th>
+                        <th>Member Name</th>
+                        <th>Book Name</th>
+                        <th>Quantity</th>
+                        <th>Issue Date</th>
+                        <th>Return Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="returnTable"></tbody>
+            </table>
+        </div>
+
+        <h1>Library Reports</h1>
+
+        <div class="report-container">
+            <div class="report-card">
+                <h3>Total Books</h3>
+                <p id="totalBooks">0</p>
+            </div>
+
+            <div class="report-card">
+                <h3>Total Members</h3>
+                <p id="totalMembers">0</p>
+            </div>
+
+            <div class="report-card">
+                <h3>Available Books</h3>
+                <p id="availableBooks">0</p>
+            </div>
+
+            <div class="report-card">
+                <h3>Issued Books</h3>
+                <p id="issuedCount">0</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Digital Library Management System</p>
+    </footer>
+
+    <script src="return.js"></script>
+</body>
+</html>

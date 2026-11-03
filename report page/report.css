@@ -1,0 +1,390 @@
+
+/* Common Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+.navbar {
+    width: 100%;
+    min-height: 70px;
+
+    background: #667eea;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 40px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Logo */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Navigation Anchor */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+}
+
+
+/* Navigation Hover */
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Logout Button */
+.nav-links button {
+    background: #e74c3c;
+
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 10px 16px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* Logout Hover */
+.nav-links button:hover {
+    background: #c0392b;
+}
+
+
+/* Main Container */
+.container {
+    width: 100%;
+    padding: 30px 20px;
+}
+
+/* Page Heading */
+.container > h1 {
+    text-align: center;
+    color: #667eea;
+    font-size: 36px;
+    margin: 15px 0 12px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Summary Cards */
+.cards {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid #667eea;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.card p {
+    color: #667eea;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Report Box */
+.report-box {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.report-box h2 {
+    color: #667eea;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+/* Search */
+#searchInput {
+    width: 100%;
+    max-width: 450px;
+    padding: 13px 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Table */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#bookTable {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: white;
+    margin-bottom: 15px;
+}
+
+#bookTable thead {
+    background: #667eea;
+    color: white;
+}
+
+#bookTable th,
+#bookTable td {
+    padding: 15px 12px;
+    text-align: center;
+    border: 1px solid #eee;
+    font-size: 14px;
+}
+
+#bookTable th {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#bookTable tbody tr:nth-child(even) {
+    background: #f8f9ff;
+}
+
+#bookTable tbody tr:hover {
+    background: #eef0ff;
+}
+
+#bookTable tbody td {
+    color: #555;
+}
+
+#bookTable tbody td[colspan="5"] {
+    padding: 25px;
+    color: #888;
+}
+
+/* Book Count */
+.book-count {
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0 20px;
+}
+
+/* Print Button */
+.report-box > button {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.report-box > button:hover {
+    background: #5568d9;
+    transform: scale(1.03);
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 0;
+    }
+
+    .container > h1 {
+        font-size: 28px;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+        margin-bottom: 25px;
+    }
+
+    .cards {
+        width: 92%;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .card h3 {
+        font-size: 17px;
+    }
+
+    .card p {
+        font-size: 32px;
+    }
+
+    .report-box {
+        width: 92%;
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+
+    .report-box h2 {
+        font-size: 22px;
+    }
+
+    #searchInput {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    #bookTable th,
+    #bookTable td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .report-box > button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Print Settings */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .navbar,
+    #searchInput,
+    .report-box > button {
+        display: none !important;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .container > h1 {
+        margin-top: 0;
+        color: black;
+    }
+
+    .subtitle {
+        color: black;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .card,
+    .report-box {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+
+    .card p,
+    .report-box h2 {
+        color: black;
+    }
+
+    #bookTable thead {
+        background: #eee !important;
+        color: black !important;
+        print-color-adjust: exact;
+    }
+}
