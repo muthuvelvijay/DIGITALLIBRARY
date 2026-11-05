@@ -10,7 +10,9 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #243447, #527da5);
+    /* background: linear-gradient(135deg, #243447, #527da5); */
+    background-image: url(../asset/image/image1.jpg);
+    background-size: cover;
 }
 
 .register-container {
